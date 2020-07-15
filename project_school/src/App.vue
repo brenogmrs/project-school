@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <Alunos />
+    <Nav />
+    <div class="margin-principal">
+      <Alunos />
+    </div>
   </div>
 </template>
 
 <script>
 import Alunos from './components/Aluno/Alunos.vue'
+import Nav from './components/_nav/Nav.vue'
+
 
 export default {
   name: 'App',
   components: {
-    Alunos
+    Alunos,
+    Nav
   }
 }
 </script>
@@ -28,8 +34,13 @@ body html{
   height: 100%;
 }
 
+.margin-principal{
+  width: 50%;
+  margin: auto;
+}
+
 #app {
-  
+  width: 100%;
 }
 
 .btn-danger{
