@@ -94,12 +94,13 @@ input{
   padding: 20px;
   font-size: 1.3em;
   color: #687f7f;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   display: inline;
 }
 
 .btn-input{
-  width: 150px;
+  width: 140px;
+  margin-left: 10px;
   border: 0;
   padding: 20px;
   font-size: 1.3em;
