@@ -16,7 +16,7 @@
             </router-link>
             
             <td>
-                3
+               {{prof.qtdAlunos}}
             </td>
             </tr>
         </tbody>
@@ -32,6 +32,7 @@
 </template>
 <script>
 import Titulo from '../_shared/Titulo';
+const baseUrl = "http://localhost:3000";
 
 export default {
     components:{
@@ -39,22 +40,45 @@ export default {
     },
     data(){
         return {
-            professores:[
-                {
-                    id: 1,
-                    nome: 'Vinicius'
-                },
-                {
-                    id: 2,
-                    nome: 'Paula'
-                },
-                {
-                    id: 3,
-                    nome: 'Luna'
-                },
-            ]
+            alunos:[],
+            professores:[]
         }
-    }
+    },
+    created(){
+        this.$http
+            .get(`${baseUrl}/alunos`)
+            .then(response => response.json())
+            .then(alunos => {
+                this.alunos = alunos;
+                this.getProfessores();
+            })
+    },
+    props: {
+
+    },
+    methods: {
+        getProfQtdAlunos(){
+            this.professores.forEach((prof, index) => {
+                prof = {
+                    id: prof.id,
+                    nome: prof.nome,
+                    qtdAlunos: this.alunos.filter(
+                        aluno => aluno.professor.id == prof.id
+                    ).length
+                }
+                this.professores[index] = prof
+            });
+        },
+        getProfessores(){
+            this.$http
+                .get(`${baseUrl}/professores`)
+                .then(response => response.json())
+                .then(professor => {
+                    this.professores = professor;
+                    this.getProfQtdAlunos();
+                })
+        }
+    },
 }
 </script>
 <style lang="">
