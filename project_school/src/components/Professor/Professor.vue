@@ -11,7 +11,10 @@
         <tbody v-if="professores.length">
             <tr v-for="(prof, index) in professores" :key="index">
             <td>{{prof.id}}</td>
-            <td>{{prof.nome}} {{prof.sobrenome}}</td>
+            <router-link to="/alunos" tag="td" style="cursor: pointer;">
+                {{prof.nome}} {{prof.sobrenome}}
+            </router-link>
+            
             <td>
                 3
             </td>

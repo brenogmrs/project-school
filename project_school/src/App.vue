@@ -1,28 +1,22 @@
 <template>
   <div id="app">
-    <Nav />
+    <Nav></Nav>
     <div class="margin-principal">
-      <Alunos />
-      <Professor/>
-      <Sobre/>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import Alunos from './components/Aluno/Alunos'
-import Professor from './components/Professor/Professor'
-import Sobre from './components/Sobre/Sobre'
+
 import Nav from './components/_nav/Nav'
 
 
 export default {
-  name: 'App',
+  name: 'app',
   components: {
-    Alunos,
-    Professor,
-    Sobre,
-    Nav
+
+    Nav,
   }
 }
 </script>
